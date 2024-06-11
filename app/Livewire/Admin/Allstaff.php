@@ -18,7 +18,6 @@ class Allstaff extends Component
     public $name;
     public $roleid;
     public $address;
-    public $salary;
     public $phone;
     public $email;
     public  $data;
@@ -47,7 +46,6 @@ class Allstaff extends Component
         $validatedData = $this->validate([
             'roleid'=>'required',
             'name'=>'required',
-            'salary'=>'required|numeric',
             'address'=>'required',
             'phone'=>'required|numeric|digits:10|unique:staff,phone_number',
             'email'=>'required|email|unique:staff,email',
@@ -58,7 +56,6 @@ class Allstaff extends Component
         $staff->name = $validatedData['name'];
         $staff->email = $validatedData['email'];
         $staff->phone_number = $validatedData['phone'];
-        $staff->salary = $validatedData['salary'];
         $staff->role_id = $validatedData['roleid'];
         $staff->address = $validatedData['address'];
         $staff->password = $validatedData['password'];

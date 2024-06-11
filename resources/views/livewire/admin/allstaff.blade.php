@@ -23,85 +23,7 @@
                     {{ session('status') }}
                 </div>
             @endif
-            @if ($showAddForm)
-                    <form wire:submit="save" class="mb-4 max-w-lg mx-auto p-4 bg-white shadow-md rounded-lg"
-                        autocomplete="off">
-                        <div class="mb-4">
-                            
-                            <x-common.selecttag 
-                                name="Role" 
-                                label="Role:" 
-                                labelclass="block text-gray-700 font-bold mb-2" 
-                                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" 
-                                model="roleid" 
-                                :options="$role" />
-                            @error('roleid')
-                            <span class="text-red-500 text-sm">{{ $message }}</span>
-                            @enderror
-                        </div>
-                        <div class="mb-4">
-                            <x-common.input name="name" label="Name:" labelclass="block text-gray-700  font-bold mb-2" 
-                            class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" type="text" model="name"/>
-                            @error('name')
-                            <span class="text-red-500 text-sm">{{ $message }}</span>
-                            @enderror
-                        </div>
-                        <div class="mb-4">
-                            <x-common.input name="email" label="Email:" labelclass="block text-gray-700  font-bold mb-2" 
-                            class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 
-                            focus:border-transparent" type="email" model="email"/>
-
-                            @error('email')
-                            <span class="text-red-500 text-sm">{{ $message }}</span>
-                            @enderror
-                        </div>
-                        <div class="mb-4">
-                            <x-common.input name="passord" label="Password:" labelclass="block text-gray-700  font-bold mb-2" 
-                            class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 
-                            focus:border-transparent" type="password" model="password"/>
-
-                            @error('password')
-                            <span class="text-red-500 text-sm">{{ $message }}</span>
-                            @enderror
-                        </div>
-                        <div class="mb-4">
-                            <x-common.input name="phone" label="Phone:" labelclass="block text-gray-700  font-bold mb-2" 
-                            class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 
-                            focus:border-transparent" type="tel" model="phone"/>
-
-                            @error('phone')
-                            <span class="text-red-500 text-sm">{{ $message }}</span>
-                            @enderror
-                        </div>
-                        <div class="mb-4">
-                            <x-common.input name="salary" label="Salary:" labelclass="block text-gray-700  font-bold mb-2" 
-                            class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 
-                            focus:border-transparent" type="number" model="salary"/>
-
-                            @error('salary')
-                            <span class="text-red-500 text-sm">{{ $message }}</span>
-                            @enderror
-                        </div>
-                        <div class="mb-4">
-                            <label for="address" class="block text-gray-700 font-bold mb-2">Address:</label>
-                            <textarea id="address" name="address" 
-                                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 
-                                focus:border-transparent" rows="4" wire:model="address"></textarea>
-                        
-                            @error('address')
-                                <span class="text-red-500">{{ $message }}</span>
-                            @enderror
-                        </div>
-                        
-                       
-                        <div class="flex items-center justify-between">
-                            <button type="submit"
-                                class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
-                                Save
-                            </button>
-                        </div>
-                    </form>
-                    @endif
+       
                    
                     <div class="flex flex-col md:flex-row md:space-x-3">
                         <div class="flex space-x-3 items-center mb-4 md:mb-0">
@@ -212,7 +134,7 @@
                 <p>No Class found.</p>
             @endif --}}
         </div>
-    
+    @include('livewire.modals.staffModal')
 </div>
 <script>
     window.addEventListener('save', function () {

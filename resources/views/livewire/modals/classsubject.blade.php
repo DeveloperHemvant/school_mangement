@@ -6,7 +6,7 @@
                 x-transition:enter="ease-out duration-300" x-transition:enter-start="opacity-0"
                 x-transition:enter-end="opacity-100" x-transition:leave="ease-in duration-200"
                 x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0"></div>
-            <i class="fa-solid fa-xmark"></i>
+            
             <!-- Modal -->
             <div class="bg-white rounded-lg overflow-hidden shadow-xl transform transition-all sm:w-3/4 lg:w-1/2"
                 role="dialog" aria-modal="true" aria-labelledby="modal-headline" x-show="open"
@@ -17,6 +17,7 @@
                 x-transition:leave-start="opacity-100 translate-y-0 sm:scale-100"
                 x-transition:leave-end="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95">
                 <!-- Modal content -->
+              
                 <div class="px-6 py-4">
                     <h2 class="text-xl font-semibold text-gray-800 mb-4">Class and Subjects</h2>
                     <table class="min-w-full bg-white">
