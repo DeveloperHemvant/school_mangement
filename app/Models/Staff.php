@@ -7,10 +7,11 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-
+use Spatie\Permission\Traits\HasRoles;
 
 class Staff extends Authenticatable
 {
+    use HasRoles;
     use HasFactory, Notifiable;
     use SoftDeletes;
     protected $guard="staff";
@@ -47,8 +48,8 @@ class Staff extends Authenticatable
             'password' => 'hashed',
         ];
     }
-    public function role()
-    {
-        return $this->belongsTo(Role::class);
-    }
+    // public function role()
+    // {
+    //     return $this->belongsTo(Role::class);
+    // }
 }

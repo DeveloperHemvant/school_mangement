@@ -19,75 +19,21 @@
                 <!-- Modal content -->
               
                 <div class="px-6 py-4">
-                    <form wire:submit.prevent="save" class="mb-4 max-w-lg mx-auto p-4 bg-white shadow-md rounded-lg" autocomplete="off">
-                        <div class="grid grid-cols-2 gap-4 mb-4">
-                            <div class="col-span-2">
-                                <x-common.selecttag 
-                                    name="Role" 
-                                    label="Role:" 
-                                    labelclass="block text-gray-700 font-bold mb-2" 
-                                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" 
-                                    model="roleid" 
-                                    :options="$role" />
-                                @error('roleid')
-                                <span class="text-red-500 text-sm">{{ $message }}</span>
-                                @enderror
-                            </div>
-                            
-                            <div>
-                                <x-common.input name="name" label="Name:" labelclass="block text-gray-700  font-bold mb-2" 
-                                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" type="text" model="name"/>
-                                @error('name')
-                                <span class="text-red-500 text-sm">{{ $message }}</span>
-                                @enderror
-                            </div>
-                
-                            <div>
-                                <x-common.input name="email" label="Email:" labelclass="block text-gray-700  font-bold mb-2" 
-                                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 
-                                focus:border-transparent" type="email" model="email"/>
-                                @error('email')
-                                <span class="text-red-500 text-sm">{{ $message }}</span>
-                                @enderror
-                            </div>
-                            
-                            <div>
-                                <x-common.input name="password" label="Password:" labelclass="block text-gray-700  font-bold mb-2" 
-                                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 
-                                focus:border-transparent" type="password" model="password"/>
-                                @error('password')
-                                <span class="text-red-500 text-sm">{{ $message }}</span>
-                                @enderror
-                            </div>
-                            
-                            <div>
-                                <x-common.input name="phone" label="Phone:" labelclass="block text-gray-700  font-bold mb-2" 
-                                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 
-                                focus:border-transparent" type="tel" model="phone"/>
-                                @error('phone')
-                                <span class="text-red-500 text-sm">{{ $message }}</span>
-                                @enderror
-                            </div>
-                
-                          
+                    <h1 class="text-3xl font-bold mb-4">Role Management</h1>
+                    <form wire:submit.prevent="createRole" class="mb-4">
+                        <div class="flex mb-4">
+                            <input type="text" class="flex-1 mr-2 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" placeholder="Enter role name" wire:model="roleName">
                         </div>
-                        
                         <div class="mb-4">
-                            <label for="address" class="block text-gray-700 font-bold mb-2">Address:</label>
-                            <textarea id="address" name="address" 
-                                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 
-                                focus:border-transparent" rows="4" wire:model="address"></textarea>
-                            @error('address')
-                            <span class="text-red-500">{{ $message }}</span>
-                            @enderror
+                            <h2 class="font-bold mb-2">Assign Permissions:</h2>
+                            @foreach ($permissions as $permission)
+                                <div class="flex items-center mb-2">
+                                    <input type="checkbox" wire:model="selectedPermissions" value="{{ $permission->id }}" class="mr-2">
+                                    <label>{{ $permission->name }}</label>
+                                </div>
+                            @endforeach
                         </div>
-                        
-                        <div class="flex items-center justify-end">
-                            <button type="submit"
-                                class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
-                                Save
-                            </button>
-                        </div>
+                        <button class="px-6 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600" type="submit">Create Role</button>
                     </form>
                 </div>
                 

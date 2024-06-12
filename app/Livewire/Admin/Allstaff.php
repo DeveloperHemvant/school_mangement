@@ -2,7 +2,6 @@
 
 namespace App\Livewire\Admin;
 
-use App\Models\Role;
 use App\Models\Staff;
 use Livewire\Component;
 use Livewire\Attributes\On;
@@ -30,7 +29,7 @@ class Allstaff extends Component
     public function toggleAddForm()
     {
         $this->showAddForm = !$this->showAddForm;
-        $this->showEditForm = false;
+        
     }
     public function confirmDelete($id){
         $this->staff_id = $id;
@@ -44,7 +43,6 @@ class Allstaff extends Component
     }
     public function save(){
         $validatedData = $this->validate([
-            'roleid'=>'required',
             'name'=>'required',
             'address'=>'required',
             'phone'=>'required|numeric|digits:10|unique:staff,phone_number',
@@ -56,7 +54,7 @@ class Allstaff extends Component
         $staff->name = $validatedData['name'];
         $staff->email = $validatedData['email'];
         $staff->phone_number = $validatedData['phone'];
-        $staff->role_id = $validatedData['roleid'];
+        // $staff->role_id = $validatedData['roleid'];
         $staff->address = $validatedData['address'];
         $staff->password = $validatedData['password'];
         $staff->created_at=Carbon::now();
@@ -67,7 +65,7 @@ class Allstaff extends Component
 
     }
     public function resetForm(){
-        $this->roleid = '';
+        
         $this->name = '';
         $this->salary = '';
         $this->address = '';
@@ -84,14 +82,11 @@ class Allstaff extends Component
     }
     public function render()
     {
-        $this->data=Staff::with('role')
-        ->where(function ($query) {
+        $this->data=Staff::where(function ($query) {
             $query->where('name', 'like', '%' . $this->search . '%')
-                
                 ->orWhere('email', 'like', '%' . $this->search . '%');
-        })->where('role_id', 'like', '%' . $this->u_search . '%')->get();
-        $this->role = Role::all();
-
+        })->get();
+        
         return view('livewire.admin.allstaff');
     }
 }

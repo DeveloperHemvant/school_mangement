@@ -31,10 +31,10 @@
                             <select wire:model.live.debounce.150ms="u_search"
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
                                 <option value=""> Select Role </option>
-                                @foreach ($role as $item)
+                                {{-- @foreach ($role as $item)
                                     <option value="{{ $item->id }}"> {{ $item->name }} </option>
                                 @endforeach
-                            </select>
+                            </select> --}}
                         </div>
                         <div class="flex md:w-auto w-full mb-4 md:mb-0">
                             <div class="relative w-full">
@@ -65,9 +65,9 @@
                             <th scope="col"
                                 class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                 Email</th>
-                            <th scope="col"
+                            {{-- <th scope="col"
                                 class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                Role</th>
+                                Role</th> --}}
                             <th scope="col"
                                 class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                 Actions</th>
@@ -82,7 +82,7 @@
                                 <td class="px-6 py-4 whitespace-nowrap">{{ $count }}</td>
                                 <td class="px-6 py-4 whitespace-nowrap">{{ $staff->name }}</td>
                                 <td class="px-6 py-4 whitespace-nowrap">{{ $staff->email }}</td>
-                                <td class="px-6 py-4 whitespace-nowrap">{{ $staff->role->name }}</td>
+                                {{-- <td class="px-6 py-4 whitespace-nowrap">{{ $staff->role->name }}</td> --}}
                                 <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
                                     <button wire:click="edit({{ $staff->id }})"
                                         style="background-color: #1e40af; color: #ffffff; font-weight: bold; padding: 0.5rem 1rem; border-radius: 0.25rem; border: none; outline: none; cursor: pointer; transition: background-color 0.3s ease;"
