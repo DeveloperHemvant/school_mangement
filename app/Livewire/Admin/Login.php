@@ -13,10 +13,7 @@ class Login extends Component
     #[Title('Admin Login')] 
     public $email;
     public $password;
-    public function guard()
-    {
-     return Auth::guard('admin');
-    }
+    
     public function login()
     {
         $credentials = [

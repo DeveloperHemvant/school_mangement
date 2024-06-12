@@ -4,6 +4,7 @@ use App\Livewire\Admin\Allstaff;
 use App\Livewire\Admin\Dahboard;
 use App\Livewire\Classes\Classes;
 // use App\Models\Subject;
+use App\Livewire\Staff\StaffDashboard;
 use Illuminate\Support\Facades\Route;
 use App\Livewire\Admin\Login;
 use App\Livewire\Staff\Logins;
@@ -13,6 +14,8 @@ use App\Livewire\Permission\RoleManagement;
 use App\Livewire\Permission\PermissionManagement;
 use App\Livewire\Subject\Subject;
 use App\Http\Middleware\AdminMiddleware;
+use App\Http\Middleware\StaffMiddleware;
+
 
 Route::get('/', function () {
     return view('welcome');
@@ -29,7 +32,7 @@ Route::get('admin/staff',Allstaff::class)->middleware(AdminMiddleware::class)->n
 Route::get('admin/roles',RoleManagement::class)->middleware(AdminMiddleware::class)->name('roles');
 Route::get('admin/permission',PermissionManagement::class)->middleware(AdminMiddleware::class)->name('permission');
 
-
+// Route::get('staff/dashboard',StaffDashboard::class)->middleware(StaffMiddleware::class)->name('staffdashboard');
 
 
 

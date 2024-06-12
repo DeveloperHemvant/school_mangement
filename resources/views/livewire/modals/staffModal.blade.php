@@ -26,12 +26,12 @@
                         </div>
                         <div class="mb-4">
                             <h2 class="font-bold mb-2">Assign Permissions:</h2>
-                            @foreach ($permissions as $permission)
+                            {{-- @foreach ($permissions as $permission)
                                 <div class="flex items-center mb-2">
                                     <input type="checkbox" wire:model="selectedPermissions" value="{{ $permission->id }}" class="mr-2">
                                     <label>{{ $permission->name }}</label>
                                 </div>
-                            @endforeach
+                            @endforeach --}}
                         </div>
                         <button class="px-6 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600" type="submit">Create Role</button>
                     </form>

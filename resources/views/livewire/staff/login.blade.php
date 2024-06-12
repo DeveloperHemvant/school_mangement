@@ -9,11 +9,11 @@
         <div class="min-h-screen flex items-center justify-center">
             <div class="bg-white p-8 rounded-lg shadow-lg w-full max-w-md">
                 <h2 class="text-2xl font-bold mb-6 text-center">Staff Login</h2>
-                <form>
+                <form wire:submit="login">
                     @csrf
                     <div class="mb-4">
                         <x-common.input name="email" label="Email Address" labelclass="block text-gray-700 mb-2" 
-                        class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" type="text" model="name"/>
+                        class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" type="email" model="email"/>
                     </div>
                     <div class="mb-4">
                         <x-common.input name="password" model="password" label="Password " labelclass="block text-gray-700 mb-2" 
