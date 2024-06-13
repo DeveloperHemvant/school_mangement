@@ -20,9 +20,10 @@ class Login extends Component
             'email' => $this->email,
             'password' => $this->password,
         ];
-
-        if (Auth::guard('admin')->attempt($credentials)) {
-            return redirect('admin/dashboard');
+        $guard = 'admin';
+        if (Auth::guard($guard)->attempt($credentials)) {
+            session(['guard' => $guard]);
+            return redirect($guard.'/dashboard');
         } else {
             dd("login failed");
         }

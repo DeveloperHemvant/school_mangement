@@ -22,7 +22,9 @@ class Logins extends Component
             'password' => $this->password,
         ];
       
-        if (Auth::guard('staff')->attempt($credentials)) {
+        $guard = 'staff';
+        if (Auth::guard($guard)->attempt($credentials)) {
+            session(['guard' => $guard]);
             
             return redirect('staff/dashboard');
         } else {

@@ -27,8 +27,8 @@ Route::get('/student/login', Sloginn::class)->name('studentlogin');
 
 
 
-Route::middleware([AdminMiddleware::class])->prefix('admin')->name('admin.')->group(function () {
-    Route::get('dashboard', Dahboard::class)->name('dashboard');
+Route::middleware(AdminMiddleware::class)->prefix('admin')->group(function () {
+    Route::get('dashboard', Dahboard::class)->name('admindashboard');
     Route::get('class', Classes::class)->name('class');
     Route::get('subject', Subject::class)->name('subject');
     Route::get('staff', Allstaff::class)->name('staff');
@@ -36,7 +36,7 @@ Route::middleware([AdminMiddleware::class])->prefix('admin')->name('admin.')->gr
     Route::get('permission', PermissionManagement::class)->name('permission');
 });
 
-// Route::get('staff/dashboard',StaffDashboard::class)->middleware(StaffMiddleware::class)->name('staffdashboard');
+Route::get('staff/dashboard',StaffDashboard::class)->middleware(['isStaff'])->name('staffdashboard');
 
 
 

@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Livewire\Permission;
+use Livewire\Attributes\Title;
 
 use Livewire\Component;
 use Spatie\Permission\Models\Role;
@@ -8,6 +9,8 @@ use Spatie\Permission\Models\Permission;
 
 class RoleManagement extends Component
 {
+    #[Title('Roles')] 
+
     public $showAddForm = false;
     public $showRoleData = false;
     public $rolePermissions = [];

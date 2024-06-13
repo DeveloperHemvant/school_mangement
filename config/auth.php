@@ -13,10 +13,10 @@ return [
     |
     */
 
-    'defaults' => [
-        'guard' => env('AUTH_GUARD', 'web'),
-        'passwords' => env('AUTH_PASSWORD_BROKER', 'users'),
-    ],
+    // 'defaults' => [
+    //     'guard' => env('AUTH_GUARD', 'web'),
+    //     'passwords' => env('AUTH_PASSWORD_BROKER', 'users'),
+    // ],
 
     /*
     |--------------------------------------------------------------------------
@@ -36,10 +36,10 @@ return [
     */
 
     'guards' => [
-        'web' => [
-            'driver' => 'session',
-            'provider' => 'users',
-        ],
+        // 'web' => [
+        //     'driver' => 'session',
+        //     'provider' => 'users',
+        // ],
         'admin' => [
             'driver' => 'session',
             'provider' => 'admins', // Make sure this matches the key in the 'providers' array
@@ -74,17 +74,17 @@ return [
     'providers' => [
         'users' => [
             'driver' => 'eloquent',
-            'model' => App\Models\User::class,
+            'model' => env('AUTH_MODEL',App\Models\User::class),
         ],
-        'admins' => [ // This key should match the 'provider' key in the 'guards' array
+        'admins' => [ 
             'driver' => 'eloquent',
-            'model' => App\Models\Admin::class,
+            'model' => env('AUTH_MODEL',App\Models\Admin::class),
         ],
-        'staffs' => [ // This key should match the 'provider' key in the 'guards' array
+        'staffs' => [ 
             'driver' => 'eloquent',
-            'model' => App\Models\Staff::class,
+            'model' => env('AUTH_MODEL',App\Models\Staff::class),
         ],
-        'parents' => [ // This key should match the 'provider' key in the 'guards' array
+        'parents' => [ 
             'driver' => 'eloquent',
             'model' => App\Models\Parents::class,
         ],

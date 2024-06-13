@@ -48,8 +48,17 @@ class Staff extends Authenticatable
             'password' => 'hashed',
         ];
     }
-    // public function role()
-    // {
-    //     return $this->belongsTo(Role::class);
-    // }
+    public function role()
+    {
+        return $this->belongsTo(Role::class);
+    }
+    public function subjects()
+    {
+        return $this->belongsToMany(Subject::class);
+    }
+
+    public function standards()
+    {
+        return $this->belongsToMany(standard::class);
+    }
 }

@@ -14,8 +14,10 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware) {
-        $middleware->append(StaffMiddleware::class);
-        $middleware->append(AdminMiddleware::class);
+        $middleware->alias([
+            'isAdmin' => AdminMiddleware::class,
+            'isStaff' => StaffMiddleware::class,
+        ]);
 
     })
     ->withExceptions(function (Exceptions $exceptions) {

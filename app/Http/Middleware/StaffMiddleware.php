@@ -6,6 +6,7 @@ use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Illuminate\Support\Facades\Auth;
+
 class StaffMiddleware
 {
     /**
@@ -15,28 +16,11 @@ class StaffMiddleware
      */
     public function handle(Request $request, Closure $next)
     {
-        // Determine the guard
-        // $guards = array_keys(config('auth.guards'));
-        // $guard = null;
-        
-        // foreach ($guards as $g) {
-        //     if (Auth::guard($g)->check()) {
-        //         $guard = $g;
-                
-        //     }
-        // }
-        
-        // return redirect()->route('stafflogin');
-
-// dd('hello');
-
-
-
-        if (Auth::guard('staff')->check()) {
+        $sessionGuard = session('guard');
+        if ($sessionGuard === 'staff') {
             return $next($request);
         }
- 
         return redirect()->route('stafflogin');
-        
+
     }
 }

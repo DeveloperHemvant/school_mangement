@@ -16,23 +16,12 @@ class AdminMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
-        // $guards = array_keys(config('auth.guards'));
-        // $guard = null;
-    
-        // foreach ($guards as $g) {
-        //     if (Auth::guard($g)->check()) {
-        //         $guard = $g;
-        //         return $next($request);
-        //     }
-        // }
-    
-        // // If no guard is authenticated, redirect to the admin login
-        // return redirect()->route('adminlogin');
-        if (Auth::guard('staff')->check()) {
+        $sessionGuard = session('guard');
+        if ($sessionGuard === 'admin') {
             return $next($request);
         }
- 
+
         return redirect()->route('adminlogin');
     }
-    
+
 }

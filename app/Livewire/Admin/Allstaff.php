@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Admin;
 
+use App\Models\Role;
 use App\Models\Staff;
 use Livewire\Component;
 use Livewire\Attributes\On;
@@ -43,9 +44,8 @@ class Allstaff extends Component
     }
     public function save(){
         $validatedData = $this->validate([
+            'roleid'=>'required',
             'name'=>'required',
-            'address'=>'required',
-            'phone'=>'required|numeric|digits:10|unique:staff,phone_number',
             'email'=>'required|email|unique:staff,email',
             'password'=>'required|min:8'
         ]);
@@ -53,9 +53,7 @@ class Allstaff extends Component
         $staff = new Staff();
         $staff->name = $validatedData['name'];
         $staff->email = $validatedData['email'];
-        $staff->phone_number = $validatedData['phone'];
-        // $staff->role_id = $validatedData['roleid'];
-        $staff->address = $validatedData['address'];
+        $staff->role_id = $validatedData['roleid'];
         $staff->password = $validatedData['password'];
         $staff->created_at=Carbon::now();
         $staff->save();
@@ -86,7 +84,7 @@ class Allstaff extends Component
             $query->where('name', 'like', '%' . $this->search . '%')
                 ->orWhere('email', 'like', '%' . $this->search . '%');
         })->get();
-        
+        $this->role = Role::all();
         return view('livewire.admin.allstaff');
     }
 }
