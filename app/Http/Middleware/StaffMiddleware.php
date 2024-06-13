@@ -16,16 +16,26 @@ class StaffMiddleware
     public function handle(Request $request, Closure $next)
     {
         // Determine the guard
-        $guards = array_keys(config('auth.guards'));
-        $guard = null;
+        // $guards = array_keys(config('auth.guards'));
+        // $guard = null;
         
-        foreach ($guards as $g) {
-            if (Auth::guard($g)->check()) {
-                $guard = $g;
-                return $next($request);
-            }
+        // foreach ($guards as $g) {
+        //     if (Auth::guard($g)->check()) {
+        //         $guard = $g;
+                
+        //     }
+        // }
+        
+        // return redirect()->route('stafflogin');
+
+// dd('hello');
+
+
+
+        if (Auth::guard('staff')->check()) {
+            return $next($request);
         }
-        
+ 
         return redirect()->route('stafflogin');
         
     }

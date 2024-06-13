@@ -25,12 +25,16 @@ Route::get('/staff/login', Logins::class)->name('stafflogin');
 Route::get('/parent/login', PLogin::class)->name('parentlogin');
 Route::get('/student/login', Sloginn::class)->name('studentlogin');
 
-Route::get('admin/dashboard',Dahboard::class)->middleware(AdminMiddleware::class)->name('admindashboard');
-Route::get('admin/class',Classes::class)->middleware(AdminMiddleware::class)->name('class');
-Route::get('admin/subject',Subject::class)->middleware(AdminMiddleware::class)->name('subject');
-Route::get('admin/staff',Allstaff::class)->middleware(AdminMiddleware::class)->name('staff');
-Route::get('admin/roles',RoleManagement::class)->middleware(AdminMiddleware::class)->name('roles');
-Route::get('admin/permission',PermissionManagement::class)->middleware(AdminMiddleware::class)->name('permission');
+
+
+Route::middleware([AdminMiddleware::class])->prefix('admin')->name('admin.')->group(function () {
+    Route::get('dashboard', Dahboard::class)->name('dashboard');
+    Route::get('class', Classes::class)->name('class');
+    Route::get('subject', Subject::class)->name('subject');
+    Route::get('staff', Allstaff::class)->name('staff');
+    Route::get('roles', RoleManagement::class)->name('roles');
+    Route::get('permission', PermissionManagement::class)->name('permission');
+});
 
 // Route::get('staff/dashboard',StaffDashboard::class)->middleware(StaffMiddleware::class)->name('staffdashboard');
 
