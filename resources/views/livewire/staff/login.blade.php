@@ -26,7 +26,7 @@
                             <input type="checkbox" name="remember" id="remember" class="mr-2">
                             <label for="remember" class="text-gray-700">Remember Me</label>
                         </div>
-                        <a href="" class="text-blue-500 hover:text-blue-700">Forgot Password?</a>
+                        <a  href="#" wire:click.prevent="showotpform" class="text-blue-500 hover:text-blue-700">Forgot Password?</a>
                     </div>
                     <button type="submit" class="w-full py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50">
                         Login
@@ -34,5 +34,6 @@
                 </form>
             </div>
         </div>
+        @include('livewire.modals.sendotp')
     {{-- </x-app> --}}
 </div>

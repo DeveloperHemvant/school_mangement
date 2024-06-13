@@ -13,6 +13,7 @@ use App\Livewire\Student\Sloginn;
 use App\Livewire\Permission\RoleManagement;
 use App\Livewire\Permission\PermissionManagement;
 use App\Livewire\Subject\Subject;
+use App\Livewire\SendOtp;
 use App\Http\Middleware\AdminMiddleware;
 use App\Http\Middleware\StaffMiddleware;
 
@@ -27,7 +28,7 @@ Route::get('/student/login', Sloginn::class)->name('studentlogin');
 
 
 
-Route::middleware(AdminMiddleware::class)->prefix('admin')->group(function () {
+Route::middleware(['isAdmin'])->prefix('admin')->group(function () {
     Route::get('dashboard', Dahboard::class)->name('admindashboard');
     Route::get('class', Classes::class)->name('class');
     Route::get('subject', Subject::class)->name('subject');
@@ -37,6 +38,7 @@ Route::middleware(AdminMiddleware::class)->prefix('admin')->group(function () {
 });
 
 Route::get('staff/dashboard',StaffDashboard::class)->middleware(['isStaff'])->name('staffdashboard');
+
 
 
 
