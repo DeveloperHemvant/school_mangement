@@ -4,6 +4,8 @@ namespace App\Livewire\Permission;
 
 use Livewire\Component;
 use Spatie\Permission\Models\Permission;
+use Livewire\Attributes\Title;
+#[Title('Permission')]
 class PermissionManagement extends Component
 {
     public $permissions;
@@ -23,6 +25,14 @@ class PermissionManagement extends Component
         Permission::create(['name' => $this->permissionName]);
         $this->permissionName = '';
         $this->permissions = Permission::all();
+    }
+    public function deletePermission($id){
+        $permission = Permission::find($id);
+        $permission->delete();
+        $this->refresh();
+    }
+    public function refresh(){
+        $this->permissions =Permission::all();
     }
     public function render()
     {

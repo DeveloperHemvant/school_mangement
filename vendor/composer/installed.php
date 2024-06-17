@@ -3,13 +3,22 @@
         'name' => 'laravel/laravel',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => '95225812a842eb29fb38be2c474d28c33ab86345',
+        'reference' => 'ba0a51607d0d26d6da174a69e5d02354782a2f27',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
         'dev' => true,
     ),
     'versions' => array(
+        'bacon/bacon-qr-code' => array(
+            'pretty_version' => '2.0.8',
+            'version' => '2.0.8.0',
+            'reference' => '8674e51bb65af933a5ffaf1c308a660387c35c22',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../bacon/bacon-qr-code',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
         'barryvdh/laravel-dompdf' => array(
             'pretty_version' => 'v2.2.0',
             'version' => '2.2.0.0',
@@ -42,6 +51,15 @@
             'replaced' => array(
                 0 => '*',
             ),
+        ),
+        'dasprid/enum' => array(
+            'pretty_version' => '1.0.5',
+            'version' => '1.0.5.0',
+            'reference' => '6faf451159fb8ba4126b925ed2d78acfce0dc016',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../dasprid/enum',
+            'aliases' => array(),
+            'dev_requirement' => false,
         ),
         'davedevelopment/hamcrest-php' => array(
             'dev_requirement' => true,
@@ -400,7 +418,7 @@
         'laravel/laravel' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => '95225812a842eb29fb38be2c474d28c33ab86345',
+            'reference' => 'ba0a51607d0d26d6da174a69e5d02354782a2f27',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
@@ -1016,6 +1034,15 @@
             'aliases' => array(),
             'dev_requirement' => true,
         ),
+        'simplesoftwareio/simple-qrcode' => array(
+            'pretty_version' => '4.2.0',
+            'version' => '4.2.0.0',
+            'reference' => '916db7948ca6772d54bb617259c768c9cdc8d537',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../simplesoftwareio/simple-qrcode',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
         'spatie/backtrace' => array(
             'pretty_version' => '1.6.1',
             'version' => '1.6.1.0',
@@ -1066,6 +1093,15 @@
             'replaced' => array(
                 0 => '*',
             ),
+        ),
+        'spatie/pdf-to-image' => array(
+            'pretty_version' => '1.2.2',
+            'version' => '1.2.2.0',
+            'reference' => '9a5cb264a99e87e010c65d4ece03b51f821d55bd',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../spatie/pdf-to-image',
+            'aliases' => array(),
+            'dev_requirement' => false,
         ),
         'symfony/clock' => array(
             'pretty_version' => 'v7.0.7',

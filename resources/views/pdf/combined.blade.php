@@ -1,13 +1,24 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Combined Documents</title>
+    <title>Staff Documents</title>
+    <style>
+        .page-break {
+            page-break-after: always;
+        }
+        .document {
+            width: 100%;
+            height: auto;
+        }
+    </style>
 </head>
 <body>
-    @foreach($pdfPaths as $path)
-        @if($path)
-            <embed src="{{ storage_path('app/' . $path) }}" width="100%" height="500px" type="application/pdf">
-        @endif
+    @foreach ($documents as $name => $path)
+        <div>
+            <h2>{{ $name }}</h2>
+            <img src="{{ $path }}" alt="{{ $name }}" class="document">
+        </div>
+        
     @endforeach
 </body>
 </html>

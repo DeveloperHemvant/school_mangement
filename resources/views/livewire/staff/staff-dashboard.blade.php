@@ -9,6 +9,7 @@
 
         </x-slot>
     
-        
+        <button wire:click="generateIdCard">Download ID Card</button>
        @include('livewire.modals.staffdetails')
 </div>
+ 

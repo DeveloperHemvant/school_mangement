@@ -8,6 +8,7 @@ use Livewire\Component;
 use Livewire\Attributes\On;
 use Livewire\Attributes\Title;
 use Carbon\Carbon;
+
 #[Title('Staff')]
 class Allstaff extends Component
 {

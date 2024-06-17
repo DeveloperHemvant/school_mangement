@@ -6,6 +6,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use Livewire\Component;
 use Illuminate\Support\Facades\Http;
+use Twilio\Rest\Client;
+
 class Logins extends Component
 {
     #[Title('Staff Login')] 
@@ -53,53 +55,27 @@ class Logins extends Component
         // Save OTP in session or database
         Session::put('password_reset_otp', $otp);
         Session::put('mobile_number', $this->phone);
-        $fields = [
-            "message" => "Your OTP is: $otp", // Customize the message as needed
-            "numbers" => $this->phone,
-        ];
+        $sid    = "ACf524ebfaf450f76ddce0346e43c4b430";
+$token  = "92cbbf2ef48bd94b3e0d28fb7685d0d5";
+$twilio = new Client($sid, $token);
+$verification_check = $twilio->verify->v2->services("VAd251c1bda5a7d447d4fefc61e83cb0ad")
+->verificationChecks
+->create([
+             "to" => "+91".$this->phone."",
+             "code" => $otp
+         ]
+ );
 
-        // Send OTP via Fast2SMS API using Laravel HTTP client
-        $curl = curl_init();
-
-curl_setopt_array($curl, array(
-  CURLOPT_URL => "https://www.fast2sms.com/dev/bulkV2",
-  CURLOPT_RETURNTRANSFER => true,
-  CURLOPT_ENCODING => "",
-  CURLOPT_MAXREDIRS => 10,
-  CURLOPT_TIMEOUT => 30,
-  CURLOPT_SSL_VERIFYHOST => 0,
-  CURLOPT_SSL_VERIFYPEER => 0,
-  CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-  CURLOPT_CUSTOMREQUEST => "POST",
-  CURLOPT_POSTFIELDS => json_encode($fields),
-  CURLOPT_HTTPHEADER => array(
-    "authorization:  R7m7Aze8in3xoaaLfSBgcFqvoDdVI7trVsR5pToD7UXCIDXyuNshtdOLBfRV",
-    "accept: */*",
-    "cache-control: no-cache",
-    "content-type: application/json"
-  ),
-));
-
-$response = curl_exec($curl);
-$err = curl_error($curl);
-dd($response);
-curl_close($curl);
-
-if ($err) {
-  echo "cURL Error #:" . $err;
-} else {
-  echo $response;
-}
-        // Handle the response
-        if ($response) {
-            // OTP sent successfully
-            $this->dispatch('otp-sent');
-            $this->showOtpForm = false;
-            $this->verifyOtpForm=true;
-        } else {
-            // Failed to send OTP
-            session()->flash('error', 'Failed to send OTP. Please try again.');
-        }
+print($verification_check->sid);
+        // if ($response) {
+        //     // OTP sent successfully
+        //     $this->dispatch('otp-sent');
+        //     $this->showOtpForm = false;
+        //     $this->verifyOtpForm=true;
+        // } else {
+        //     // Failed to send OTP
+        //     session()->flash('error', 'Failed to send OTP. Please try again.');
+        // }
     }
     public function render()
     {
